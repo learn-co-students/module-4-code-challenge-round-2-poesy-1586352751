@@ -2,7 +2,6 @@ import React from "react";
 
 class Poem extends React.Component {
   render() {
-    console.log(this.props.poem)
     const {title, content, author} = this.props.poem
     return (
       <div>
