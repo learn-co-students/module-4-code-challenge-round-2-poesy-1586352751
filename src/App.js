@@ -4,6 +4,16 @@ import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
 
 class App extends React.Component {
+  state = {
+    poemsArray: []
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:6001/poems')
+    .then(r => r.json())
+    .then(poemsArray => this.setState({poemsArray: poemsArray}))
+  }
+
   render() {
     return (
       <div className="app">
@@ -11,7 +21,7 @@ class App extends React.Component {
           <button>Show/hide new poem form</button>
           {false && <NewPoemForm />}
         </div>
-        <PoemsContainer />
+        <PoemsContainer poemsArray={this.state.poemsArray} />
       </div>
     );
   }
