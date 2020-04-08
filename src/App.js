@@ -20,8 +20,20 @@ class App extends React.Component {
   }
 
   addOnePoemViaForm = (newPoem) => {
-    const newPoemsArray = [...this.state.poemsArray, newPoem]
-    this.setState({poemsArray: newPoemsArray})
+    const configObject = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(newPoem)
+    }
+
+    fetch('http://localhost:6001/poems', configObject)
+    .then(r => r.json())
+    .then(newBackendPoem => {
+      const newPoemsArray = [...this.state.poemsArray, newBackendPoem]
+      this.setState({poemsArray: newPoemsArray})
+    })
   }
 
   render() {
