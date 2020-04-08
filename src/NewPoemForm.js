@@ -17,7 +17,12 @@ class NewPoemForm extends React.Component {
     event.preventDefault()
     let newPoemPOJO = {...this.state}
     this.props.addOnePoemViaForm(newPoemPOJO)
-
+    this.setState({
+      id: null,
+      title: '',
+      content: '',
+      author: ''
+    })
   }
 
   render() {
