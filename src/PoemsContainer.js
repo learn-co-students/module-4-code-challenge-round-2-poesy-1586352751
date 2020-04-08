@@ -6,7 +6,7 @@ class PoemsContainer extends React.Component {
   // Option#2
   // arrayComponents = () => {
   //   let arrayOfPoem = this.props.poemArray.map( poem => {
-  //     return <Poem key={poem.id} poem={ poem } />
+  //     return <Poem key={poem.id} poem={ poem } /> don't forget the key
   //   })
 
   //   return arrayOfPoem
@@ -15,7 +15,7 @@ class PoemsContainer extends React.Component {
   render() {
     
     let arrayComponents = this.props.poemArray.map( poem => {
-      return <Poem key={poem.id} poem={poem} />
+      return <Poem key={poem.id} poem={poem} /> // lost quite a bit of time because I fogot to close the component -> />
     })
 
     console.log(this.props.poemArray)
