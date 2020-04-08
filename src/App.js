@@ -19,12 +19,17 @@ class App extends React.Component {
     this.setState({formClicked: !this.state.formClicked})
   }
 
+  addOnePoemViaForm = (newPoem) => {
+    const newPoemsArray = [...this.state.poemsArray, newPoem]
+    this.setState({poemsArray: newPoemsArray})
+  }
+
   render() {
     return (
       <div className="app">
         <div className="sidebar">
           <button onClick={this.toggleForm} >Show/hide new poem form</button>
-          {this.state.formClicked && <NewPoemForm />}
+          {this.state.formClicked && <NewPoemForm addOnePoemViaForm={this.addOnePoemViaForm} />}
         </div>
         <PoemsContainer poemsArray={this.state.poemsArray} />
       </div>
