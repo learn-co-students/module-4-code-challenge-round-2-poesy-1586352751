@@ -42,7 +42,7 @@ class Poem extends React.Component {
         }
         
       
-        <button onClick={this.handleClick} > {this.state.clicked ? "Mark as Read" : "Mark as Unread"}</button>
+        <button onClick={this.handleClick} > {this.state.clicked ? "Mark as Unread" : "Mark as Read"}</button>
       </div>
     );
   }
