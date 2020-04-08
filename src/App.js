@@ -31,7 +31,7 @@ class App extends React.Component {
     let formattedPoem = {
       title: poemObj.title,
       content: poemObj.content,
-      author: poemObj.autho
+      author: poemObj.author
     }
 
     fetch("http://localhost:6001/poems",{

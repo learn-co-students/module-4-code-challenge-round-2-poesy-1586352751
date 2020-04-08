@@ -3,7 +3,7 @@ import Poem from "./Poem";
 
 class PoemsContainer extends React.Component {
 
-
+  // Option#2
   // arrayComponents = () => {
   //   let arrayOfPoem = this.props.poemArray.map( poem => {
   //     return <Poem key={poem.id} poem={ poem } />
