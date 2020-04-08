@@ -36,6 +36,27 @@ class App extends React.Component {
     })
   }
 
+  deleteOnePoemViaCard = (poemIDToDelete) => {
+    const configObject = {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json"
+      },
+    }
+    fetch(`http://localhost:6001/poems/${poemIDToDelete}`, configObject)
+    .then(r => r.json())
+    .then(() => {
+      let shortenedPoemsArray = [...this.state.poemsArray].filter(poemPOJO => poemPOJO.id != poemIDToDelete)
+      // one's a string and one's a number I think
+      // hence doing != instead of !==
+      // cool this finally works, I'd like to know if there's a better way than adding the ID to the page's html
+      // to be able to grab the ID from the delete button's onClick 
+      // I feel like I did some mod 3 stuff here goin up the DOM tree to the parentNode
+
+      this.setState({poemsArray: shortenedPoemsArray})
+    })
+  }
+
   render() {
     return (
       <div className="app">
@@ -43,7 +64,10 @@ class App extends React.Component {
           <button onClick={this.toggleForm} >Show/hide new poem form</button>
           {this.state.formClicked && <NewPoemForm addOnePoemViaForm={this.addOnePoemViaForm} />}
         </div>
-        <PoemsContainer poemsArray={this.state.poemsArray} />
+        <PoemsContainer 
+          poemsArray={this.state.poemsArray} 
+          deleteOnePoemViaCard={this.deleteOnePoemViaCard}
+        />
       </div>
     );
   }
