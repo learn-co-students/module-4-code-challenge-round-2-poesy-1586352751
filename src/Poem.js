@@ -13,10 +13,14 @@ class Poem extends React.Component {
     })
   }
 
+  handleDelete = (event) => {
+    console.log(event, 'i am a delete')
+    this.props.deleteOnePoem(this.props.poem.id)
+  }
+
 
   render() {
 
-    console.log(this.props)
 
     let {title, content, author} = this.props.poem
     return (
@@ -27,7 +31,7 @@ class Poem extends React.Component {
         <strong>- By {author}</strong>
         </p>
         <button onClick={this.changeState}>{this.state.clicked ? 'Mark as Read' : 'Mark as Unread'}</button><br></br>
-        <button>Delete</button>
+        <button onClick={this.handleDelete}>Delete</button>
       </div>
     );
   }
